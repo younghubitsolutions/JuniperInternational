@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Juniper International</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0a4a7a;
+            --secondary-blue: #2a7db6;
+            --accent-green: #2ecc71;
+            --light-gray: #f8f9fa;
+            --dark-gray: #333;
+            --text-gray: #555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-gray);
+            line-height: 1.6;
+            padding-top: 76px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-green);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 8px;
+            color: var(--dark-gray) !important;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-blue) !important;
+        }
+        
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        .product-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(10, 74, 122, 0.8), rgba(10, 74, 122, 0.9)), 
+                        url('https://images.unsplash.com/photo-1516549655669-df6654e435de?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: -76px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+        
+        .text-center .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .product-category {
+            margin-bottom: 80px;
+        }
+        
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            height: 100%;
+            border: 1px solid #eee;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-features {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+        
+        .product-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .product-features li i {
+            color: var(--accent-green);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .product-gallery {
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-icon {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            border-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .modal-img {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        
+        .footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .product-hero {
+                height: 40vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat me-2"></i>Juniper<span>International</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary ms-lg-3">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Medical Products</h1>
+                <p class="lead">High-quality medical equipment and consumables for healthcare institutions across Nepal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Surgical Products -->
+            <div id="surgical" class="product-category">
+                <h2 class="section-title">Surgical Products & PPE</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Surgical Gloves">
+                            <div class="product-info">
+                                <h4>Surgical Gloves</h4>
+                                <p>Sterile latex and non-latex surgical gloves for medical procedures. Available in various sizes and thicknesses.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>Powder-free options</li>
+                                    <li><i class="fas fa-check"></i>Ambidextrous design</li>
+                                    <li><i class="fas fa-check"></i>CE and FDA certified</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Surgical Masks">
+                            <div class="product-info">
+                                <h4>Surgical Masks & N95 Respirators</h4>
+                                <p>3-ply surgical masks and N95 respirators for infection control in medical settings.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>High filtration efficiency</li>
+                                    <li><i class="fas fa-check"></i>Comfortable nose bridge</li>
+                                    <li><i class="fas fa-check"></i>Adjustable ear loops</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="PPE Kits">
+                            <div class="product-info">
+                                <h4>Complete PPE Kits</h4>
+                                <p>Full personal protective equipment sets including gowns, face shields, gloves, and shoe covers.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>Level 1-4 protection</li>
+                                    <li><i class="fas fa-check"></i>Fluid-resistant materials</li>
+                                    <li><i class="fas fa-check"></i>Single-use disposable</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery for Surgical Products -->
+                <div class="product-gallery">
+                    <h4 class="mb-4">Product Gallery</h4>
+                    <div class="row g-3">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2032&q=80">
+                                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2032&q=80" alt="Medical Supplies">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80">
+                                <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Surgical Equipment">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80">
+                                <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Medical Masks">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80">
+                                <img src="https://images.unsplash.com/photo-1583947581924-860bda6a26df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="PPE Equipment">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Medical Consumables -->
+            <div id="consumables" class="product-category">
+                <h2 class="section-title">Medical Consumables</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="img/img2younghub.png" alt="Syringes and Needles">
+                            <div class="product-info">
+                                <h4>Syringes & Needles</h4>
+                                <p>Sterile hypodermic syringes and disposable needles in various sizes for injections and aspirations.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>1ml to 60ml sizes</li>
+                                    <li><i class="fas fa-check"></i>Luer lock and slip tips</li>
+                                    <li><i class="fas fa-check"></i>Single-use disposable</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="img/img3younghub.png" alt="IV Cannulas">
+                            <div class="product-info">
+                                <h4>IV Cannulas & Sets</h4>
+                                <p>Intravenous cannulas, infusion sets, and accessories for fluid administration.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>14G to 24G sizes</li>
+                                    <li><i class="fas fa-check"></i>Safety winged sets</li>
+                                    <li><i class="fas fa-check"></i>Transparent chambers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://www.dramshealthcare.com/images/resource/offer-2.jpg" alt="Catheters">
+                            <div class="product-info">
+                                <h4>Catheters & Urine Bags</h4>
+                                <p>Foley catheters, urine bags, and urology products for patient care.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>Various French sizes</li>
+                                    <li><i class="fas fa-check"></i>Latex-free options</li>
+                                    <li><i class="fas fa-check"></i>Sterile packaging</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Infusion Equipment -->
+            <div id="infusion" class="product-category">
+                <h2 class="section-title">Infusion & Transfusion Equipment</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvvidMPpVJ0PYUvq8u4aGA_YW2PlagvgTWCg&s" alt="IV Sets">
+                            <div class="product-info">
+                                <h4>IV Administration Sets</h4>
+                                <p>Complete IV sets with drip chambers, tubing, and connectors for fluid therapy.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>Micro and macro drip</li>
+                                    <li><i class="fas fa-check"></i>Roller clamps</li>
+                                    <li><i class="fas fa-check"></i>Y-type injection ports</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80" alt="Blood Transfusion">
+                            <div class="product-info">
+                                <h4>Blood Transfusion Sets</h4>
+                                <p>Specialized sets for blood and blood product administration.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>170-200 micron filters</li>
+                                    <li><i class="fas fa-check"></i>Blood warmers available</li>
+                                    <li><i class="fas fa-check"></i>Compatible with all bags</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-card">
+                            <img src="https://be-safe.co.za/wp-content/uploads/2021/10/Admin-Set-10-Drop-Drug-Port-ADM10.DP_.jpg" alt="Fluid Administration">
+                            <div class="product-info">
+                                <h4>Fluid Administration Systems</h4>
+                                <p>Complete systems including burette sets, extension lines, and three-way stopcocks.</p>
+                                <ul class="product-features">
+                                    <li><i class="fas fa-check"></i>Burette chambers</li>
+                                    <li><i class="fas fa-check"></i>Extension lines</li>
+                                    <li><i class="fas fa-check"></i>Stopcock manifolds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Range Summary -->
+    <section class="py-5 bg-light-gray">
+        <div class="container">
+            <h2 class="section-title text-center">Complete Product Range</h2>
+            <div class="row text-center mt-5">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-icon mx-auto">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h4>Injection Products</h4>
+                    <p>Syringes, needles, IV cannulas</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-icon mx-auto">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h4>Surgical Supplies</h4>
+                    <p>Gloves, masks, gowns, drapes</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-icon mx-auto">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h4>Hospital Consumables</h4>
+                    <p>Catheters, urine bags, wound care</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="product-icon mx-auto">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4>Infusion Equipment</h4>
+                    <p>IV sets, transfusion systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3>Request Our Complete Product Catalog</h3>
+                    <p class="mb-0">Get detailed specifications, pricing, and technical information for all our medical products.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="contact.html" class="btn btn-light btn-lg">Download Catalog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <img id="modalImage" src="" class="modal-img" alt="Product Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Juniper International</h5>
+                    <p>A leading importer, distributor, and supplier of medical, surgical, and healthcare products across Nepal since 2015.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="products.html">Products</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Product Categories</h5>
+                    <div class="footer-links">
+                        <a href="products.html#surgical">Surgical Products</a>
+                        <a href="products.html#consumables">Medical Consumables</a>
+                        <a href="products.html#infusion">Infusion Equipment</a>
+                        <a href="contact.html">Request Catalog</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Kathmandu, Nepal</p>
+                    <p><i class="fas fa-phone me-2"></i>+977 9851097188</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@juniperinternational.com.np</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Juniper International Pvt. Ltd. All rights reserved. Registered under the Companies Act, 2006, Government of Nepal.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Set active nav link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === 'products.html') {
+                    link.classList.add('active');
+                }
+            });
+
+            // Image modal functionality
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            if(imageModal) {
+                imageModal.addEventListener('show.bs.modal', function(event) {
+                    const button = event.relatedTarget;
+                    const imageUrl = button.getAttribute('data-img');
+                    modalImage.src = imageUrl;
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

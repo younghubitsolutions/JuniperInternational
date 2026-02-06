@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Juniper International</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0a4a7a;
+            --secondary-blue: #2a7db6;
+            --accent-green: #2ecc71;
+            --light-gray: #f8f9fa;
+            --dark-gray: #333;
+            --text-gray: #555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-gray);
+            line-height: 1.6;
+            padding-top: 76px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-green);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 8px;
+            color: var(--dark-gray) !important;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-blue) !important;
+        }
+        
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        .about-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(10, 74, 122, 0.8), rgba(10, 74, 122, 0.9)), 
+                        url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: -76px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .mission-card {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            padding: 40px 30px;
+            height: 100%;
+            border-left: 5px solid var(--accent-green);
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+        
+        .team-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            border-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 30px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--accent-green);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--secondary-blue);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent-green);
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                height: 40vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat me-2"></i>Juniper<span>International</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary ms-lg-3">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>About Juniper International</h1>
+                <p class="lead">Leading medical equipment distribution in Nepal since 2015</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">Company Overview</h2>
+                    <p class="lead">Juniper International Pvt. Ltd. is a legally registered private limited company in Nepal, incorporated on 23 July 2015 under the Companies Act, 2006.</p>
+                    <p>We operate as an importer, distributor, and supplier of medical, surgical, and healthcare products across Nepal. Our company focuses on supplying essential medical consumables, surgical products, and hospital equipment to healthcare institutions.</p>
+                    <p>We work with international manufacturers and suppliers to ensure that high-quality, safe, and reliable healthcare products are available in the Nepalese market. Our distribution network covers all regions of Nepal, ensuring timely delivery to hospitals, clinics, and healthcare centers.</p>
+                    <a href="contact.html" class="btn btn-primary mt-3">Contact Us</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="img/img1younghub.png" alt="Medical Equipment Warehouse">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-5 bg-light-gray">
+        <div class="container">
+            <h2 class="section-title text-center">Our Mission & Vision</h2>
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-bullseye text-primary me-2"></i>Our Mission</h3>
+                        <p class="mt-3">To provide high-quality, safe, and reliable medical equipment and consumables to healthcare institutions across Nepal, ensuring accessibility and affordability while maintaining international standards of quality and service.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="mission-card">
+                        <h3><i class="fas fa-eye text-primary me-2"></i>Our Vision</h3>
+                        <p class="mt-3">To become Nepal's most trusted and comprehensive medical equipment distributor, contributing to the advancement of healthcare services through reliable supply chains and partnerships with global manufacturers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Our Values</h2>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Quality Assurance</h4>
+                        <p>All products are certified and meet international healthcare standards for safety and reliability.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Reliability</h4>
+                        <p>Consistent supply and timely delivery to ensure healthcare facilities never face shortages.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Partnership</h4>
+                        <p>Building long-term relationships with healthcare providers and international manufacturers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Timeline -->
+    <section class="py-5 bg-light-gray">
+        <div class="container">
+            <h2 class="section-title text-center">Our Journey</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>2015</h4>
+                            <p>Company incorporation under the Companies Act, 2006, Government of Nepal. Started operations with basic medical consumables.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2016</h4>
+                            <p>Expanded product range to include surgical products and established partnerships with 3 international manufacturers.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2017</h4>
+                            <p>Extended distribution network to cover Kathmandu Valley and major cities across Nepal. Added infusion equipment to product portfolio.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2018</h4>
+                            <p>Established modern warehousing facility with temperature-controlled storage for medical products.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2019</h4>
+                            <p>Partnered with 10+ international healthcare manufacturers. Reached 200+ healthcare institution clients.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2020</h4>
+                            <p>Played crucial role in supplying PPE and medical equipment during COVID-19 pandemic. Expanded to all 77 districts of Nepal.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2023</h4>
+                            <p>Current: Serving 500+ healthcare partners with 1000+ medical products. Continuing to expand product range and services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Our Leadership</h2>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Managing Director">
+                        <div class="p-4">
+                            <h4>Rajesh Sharma</h4>
+                            <p class="text-primary">Managing Director</p>
+                            <p>15+ years experience in medical equipment distribution and healthcare management.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80" alt="Operations Director">
+                        <div class="p-4">
+                            <h4>Priya Gurung</h4>
+                            <p class="text-primary">Operations Director</p>
+                            <p>Expert in logistics, supply chain management, and international procurement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2078&q=80" alt="Technical Head">
+                        <div class="p-4">
+                            <h4>Anil Thapa</h4>
+                            <p class="text-primary">Technical Head</p>
+                            <p>Specialized in medical equipment standards, certification, and quality control.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3>Partner With Nepal's Trusted Medical Equipment Distributor</h3>
+                    <p class="mb-0">Join 500+ healthcare institutions who trust us for their medical equipment needs.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="contact.html" class="btn btn-light btn-lg">Become a Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Juniper International</h5>
+                    <p>A leading importer, distributor, and supplier of medical, surgical, and healthcare products across Nepal since 2015.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="products.html">Products</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <div class="footer-links">
+                        <a href="products.html">Medical Equipment</a>
+                        <a href="products.html">Surgical Supplies</a>
+                        <a href="products.html">Hospital Consumables</a>
+                        <a href="contact.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Kathmandu, Nepal</p>
+                    <p><i class="fas fa-phone me-2"></i>+977 9851097188</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@juniperinternational.com.np</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Juniper International Pvt. Ltd. All rights reserved. Registered under the Companies Act, 2006, Government of Nepal.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Set active nav link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === 'about.html') {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

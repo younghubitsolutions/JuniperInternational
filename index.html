@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juniper International | Medical Equipment Distributor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0a4a7a;
+            --secondary-blue: #2a7db6;
+            --accent-green: #2ecc71;
+            --light-gray: #f8f9fa;
+            --dark-gray: #333;
+            --text-gray: #555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-blue) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--accent-green);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 8px;
+            color: var(--dark-gray) !important;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-blue) !important;
+        }
+        
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            margin-top: 0;
+        }
+        
+        .carousel-item {
+            height: 80vh;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            max-width: 1200px;
+        }
+        
+        .carousel-caption h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .carousel-caption p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .carousel-control-prev, .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 20px;
+        }
+        
+        .carousel-control-prev {
+            left: 20px;
+        }
+        
+        .carousel-control-next {
+            right: 20px;
+        }
+        
+        .carousel-indicators {
+            bottom: 30px;
+        }
+        
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 8px;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover {
+            transform: translateY(-10px);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: color 0.3s;
+        }
+        
+        .read-more-btn:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .read-more-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Services Highlights */
+        .services-highlights {
+            padding: 80px 0;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: all 0.3s;
+            border-top: 5px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-top-color: var(--accent-green);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--accent-green);
+            transform: scale(1.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            border-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        /* Products Preview */
+        .products-preview {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 60px 0;
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #0a3a62;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer h5:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-green);
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-caption h1 {
+                font-size: 2.5rem;
+            }
+            
+            .carousel-caption p {
+                font-size: 1rem;
+            }
+            
+            .hero-slider, .carousel-item {
+                height: 70vh;
+            }
+            
+            .carousel-control-prev, .carousel-control-next {
+                width: 40px;
+                height: 40px;
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-slider, .carousel-item {
+                height: 60vh;
+            }
+            
+            .carousel-caption h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-counter {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Make video behave exactly like carousel images */
+.carousel-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure images also stay consistent */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-heartbeat me-2"></i>Juniper<span>International</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary ms-lg-3">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Hero Slider -->
+<section class="hero-slider">
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+            <!-- Slide 1 (Image) -->
+            <div class="carousel-item active">
+                <img src="https://www.agtahomecare.com/pub/media/Plazathemes/blog/images/z/i/zigzag-2-1.png" alt="Medical Equipment Distribution">
+                <div class="carousel-caption">
+                    <h1>Quality Medical Equipment Distribution</h1>
+                    <p>Juniper International supplies essential medical, surgical, and healthcare products across Nepal since 2015. Partnering with global manufacturers for certified medical products.</p>
+                    <a href="#about" class="btn btn-primary me-3">Learn More</a>
+                    <a href="products.html" class="btn btn-outline-light">View Products</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 (Video) -->
+            <div class="carousel-item">
+                <video autoplay muted loop playsinline>
+                    <source src="vid.mp4" type="video/mp4">
+                </video>
+                <div class="carousel-caption">
+                    <h1>Supplying Hospitals Across Nepal</h1>
+                    <p>We ensure timely delivery, proper storage, and consistent supply of essential healthcare products to medical institutions throughout all 77 districts of Nepal.</p>
+                    <a href="#services" class="btn btn-primary me-3">Our Services</a>
+                    <a href="contact.html" class="btn btn-outline-light">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 (Image) -->
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2032&q=80" alt="Medical Products">
+                <div class="carousel-caption">
+                    <h1>Certified Medical Products & Equipment</h1>
+                    <p>From surgical supplies to infusion equipment, we provide high-quality, safe, and reliable healthcare products meeting international standards.</p>
+                    <a href="products.html" class="btn btn-primary me-3">Browse Products</a>
+                    <a href="contact.html" class="btn btn-outline-light">Request Catalog</a>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">About Juniper International</h2>
+                    <p class="lead">Established in 2015, Juniper International Pvt. Ltd. is a legally registered private limited company in Nepal, operating as an importer, distributor, and supplier of medical, surgical, and healthcare products across the country.</p>
+                    <p>We focus on supplying essential medical consumables, surgical products, and hospital equipment to healthcare institutions. Our company works with international manufacturers and suppliers to ensure that high-quality, safe, and reliable healthcare products are available in the Nepalese market.</p>
+                    <p>Registered under the Companies Act, 2006, and registered with the Office of the Company Registrar, Ministry of Industry, Government of Nepal, we maintain the highest standards of quality and service.</p>
+                    <a href="about.html" class="read-more-btn">
+                        Read More About Us <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="img/img1younghub.png" alt="About Juniper International">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Highlights -->
+    <section id="services" class="services-highlights">
+        <div class="container">
+            <h2 class="section-title text-center">Our Core Services</h2>
+            <p class="text-center mb-5">We provide comprehensive medical equipment distribution solutions across Nepal</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-globe-asia"></i>
+                        </div>
+                        <h4>International Import</h4>
+                        <p>Importing certified medical products from global manufacturers, ensuring compliance with international healthcare standards and regulations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h4>Warehousing & Storage</h4>
+                        <p>State-of-the-art storage facilities with proper temperature control and inventory management for medical products.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <h4>Nationwide Distribution</h4>
+                        <p>Efficient logistics network delivering medical equipment to hospitals, clinics, and healthcare centers across all 77 districts of Nepal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Preview -->
+    <section class="products-preview">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Products</h2>
+            <p class="text-center mb-5">High-quality medical equipment and consumables from trusted international manufacturers</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Surgical Products">
+                        <div class="p-4">
+                            <h5>Surgical Products & PPE</h5>
+                            <p class="mb-3">Surgical gloves, masks, gowns, drapes, and complete PPE kits for medical professionals.</p>
+                            <a href="products.html#surgical" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="img/img2younghub.png" alt="Medical Consumables">
+                        <div class="p-4">
+                            <h5>Medical Consumables</h5>
+                            <p class="mb-3">Syringes, needles, IV cannulas, catheters, and other single-use medical items.</p>
+                            <a href="products.html#consumables" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="img/img3younghub.png" alt="Infusion Equipment">
+                        <div class="p-4">
+                            <h5>Infusion Equipment</h5>
+                            <p class="mb-3">IV sets, blood transfusion systems, and fluid administration equipment.</p>
+                            <a href="products.html#infusion" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="products.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-sm-6 mb-5">
+                    <div class="stats-counter">8+</div>
+                    <h5>Years Experience</h5>
+                    <p>Serving since 2015</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-5">
+                    <div class="stats-counter">500+</div>
+                    <h5>Healthcare Partners</h5>
+                    <p>Hospitals & clinics</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-5">
+                    <div class="stats-counter">1000+</div>
+                    <h5>Products</h5>
+                    <p>Medical equipment & consumables</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-5">
+                    <div class="stats-counter">77</div>
+                    <h5>Districts Covered</h5>
+                    <p>Nationwide distribution</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3>Need Medical Equipment for Your Healthcare Facility?</h3>
+                    <p class="mb-0">Contact us for a comprehensive catalog and competitive pricing. Join 500+ healthcare institutions who trust us for their medical equipment needs.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="contact.html" class="btn btn-primary btn-lg">Request Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Juniper International</h5>
+                    <p>A leading importer, distributor, and supplier of medical, surgical, and healthcare products across Nepal since 2015.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="products.html">Products</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <div class="footer-links">
+                        <a href="products.html#surgical">Surgical Products</a>
+                        <a href="products.html#consumables">Medical Consumables</a>
+                        <a href="products.html#infusion">Infusion Equipment</a>
+                        <a href="contact.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Kathmandu, Nepal</p>
+                    <p><i class="fas fa-phone me-2"></i>+977 9851097188</p>
+                    <p><i class="fas fa-envelope me-2"></i>juniperinternational@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Juniper International Pvt. Ltd. All rights reserved. Develop by &copy;<a href="https://younghubitsolutions.com/" target="_blank">Young Hub IT Solutions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Set active nav link
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if(link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Set home as active if on index
+            if(currentPage === '' || currentPage === 'index.html') {
+                document.querySelector('.nav-link[href="index.html"]').classList.add('active');
+            }
+
+            // Initialize carousel with autoplay
+            const myCarousel = document.getElementById('mainCarousel');
+            if(myCarousel) {
+                const carousel = new bootstrap.Carousel(myCarousel, {
+                    interval: 5000,
+                    wrap: true,
+                    pause: false
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
